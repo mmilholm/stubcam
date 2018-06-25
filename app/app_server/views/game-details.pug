@@ -1,0 +1,46 @@
+extends layout
+
+mixin admission
+  each admish in admissions
+    tr
+      td.pr-5= admish.group
+      td= admish.price
+
+
+block content
+  .row.pt-5
+    .col-12.col-md-8
+      .card.mb-3
+        h1.card-header.text-center #{gameDetails.homeTeam} vs #{gameDetails.awayTeam}
+        
+        img.card-img-top(src='https://farm1.staticflickr.com/701/31246214194_4890d62d26.jpg')
+       
+        .card-block
+          p.lead.card-text.pb-4.pl-3= gameDetails.preview
+        
+        dl.row.pl-3
+          dt.col-sm-3 SPORT:
+          dd.col-sm-9= gameDetails.sport
+          
+          dt.col-sm-3 WHERE:
+          dd.col-sm-9= gameDetails.location
+          
+          dt.col-sm-3 WHEN:
+          dd.col-sm-9= gameDetails.gameDate
+          dd.col-sm-9.offset-sm-3= gameDetails.time
+        
+        .card-block.py-3.px-3
+          a.card-link.btn-sm.btn-danger.float-right(href='/game/tickets').brand-text BUY TICKET
+
+    
+    .col-12.col-md-4 
+      h3.brand-text Admission
+      table.table.table-striped
+        thread
+          tr.table-success
+            th Group
+            th Price
+        tbody
+          +admission
+            
+    

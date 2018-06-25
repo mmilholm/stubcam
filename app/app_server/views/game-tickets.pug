@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  
+  .row.pl-5.pt-3
+    .col-12
+      p.pb-0.mb-0 
+        Camosun College Men's Volleyball vs DC Royals
+      p.
+        6:00pm Friday, 3 November, 2017 | PISE, Victoria, BC
+  
+  .row.pl-5.pr-5
+    table.table.table-striped.my-2
+      thread
+        tr.table-success
+          th Category
+          th Type
+          th Price
+          th Quantity
+          th Total
+      tbody
+        each admish in admissions
+        
+          tr
+            td= admish.category
+            td= admish.group
+            td= admish.price
+            td 
+              .form-group.pb-0
+                select.form-control
+                  option 0
+                  option 1
+                  option 2
+                  option 3
+                  option 4
+            td $
+            
+        tr
+          td
+          td
+          td TOTAL
+          td 

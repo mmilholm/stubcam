@@ -1,0 +1,74 @@
+extends layout
+
+block content
+
+  .row.py-3
+    .col-12.col-md-8
+      #accordion(role="tablist", aria-multiselectable="true")
+        .card
+          .card-header(role="tab")#headingOne
+            h5.mb-0
+              a(data-toggle="collapse", data-parent="#accordion", href="#collapseOne", aria-expanded="true", aria-controls="collapseOne")
+                h2.brand-text Upcoming Games
+
+          #collapseOne(class="collapse show", role="tabpanel", aria-labelledby="headingOne")
+            .card-block
+              each game in games
+                .card.mt-2
+                  .card-body
+                    h4.brand-text #{game.homeTeam} vs #{game.awayTeam}
+                    h6.card-subtitle.text-muted.pt-1.pb-4= game.sport
+                    a.card-link.btn-sm.btn-primary.float-left(href='/game') INFO
+                  
+  
+        .card
+          .card-header(role="tab")#headingTwo
+            h5.mb-0
+              a.collapsed(data-toggle='collapse', data-parent="#accordion", href="#collapseTwo", aria-expanded="false", aria-controls="collapseTwo")
+                h2.brand-text Women's Volleyball
+
+          #collapseTwo(class="collapse", role="tabpanel", aria-labelledby="headingTwo")
+            .card-block
+              each game in games
+                - if (game.sport == 'Women\'s Volleyball')
+                  .card.mt-2
+                    .card-body
+                      h4.card-title.brand-text #{game.homeTeam} vs #{game.awayTeam}
+                      h6.card-subtitle.text-muted.pt-1.pb-4=game.sport  
+                      a.card-link.btn-sm.btn-primary.float-left(href='/game') INFO
+
+
+
+        .card
+          .card-header(role="tab")#headingThree
+            h5.mb-0
+              a.collapsed(data-toggle='collapse', data-parent="#accordion", href="#collapseThree", aria-expanded="false", aria-controls="collapseThree")
+                h2.brand-text Men's Volleyball
+
+          #collapseThree(class="collapse", role="tabpanel", aria-labelledby="headingThree")
+            .card-block
+              each game in games
+                - if (game.sport == 'Men\'s Volleyball')
+                  .card.mt-2
+                    .card-body
+                      h4.card-title.brand-text #{game.homeTeam} vs #{game.awayTeam}
+                      h6.card-subtitle.text-muted.pt-1.pb-4=game.sport
+                      a.card-link.btn-sm.btn-primary.float-left(href='/game') INFO
+
+
+      
+      
+    .col-12.col-md-4
+      .row.justify-content-start
+        .col-12
+          p.lead.pl-4.pt-2.sc-header-font= pageSlogan.tagline1
+      .row.justify-content-around 
+        .col-10  
+          p.lead.pl-4.pt-0.sc-header-font= pageSlogan.tagline2
+      .row.justify-content-center
+        h1.pl-3.sc-header-font= pageSlogan.title
+      .row.justify-content-center
+        img(src="/images/c_logo_long.png" alt="Camosun Logo") 
+      .row.align-items-center
+        p.lead.pl-4.pt-5.sc-header-font.sc-sb-color= pageSlogan.moto
+    
